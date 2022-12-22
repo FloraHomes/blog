@@ -1,0 +1,184 @@
+:root {
+  --modal-duration: 1s;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40000;
+}
+.modal-open {
+  overflow: hidden;
+}
+.modal-container.show-modal {
+  display: block;
+}
+
+.modal-content {
+  background-color: transparent;
+  /* border-radius: 5px; */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  width: 800px;
+  animation: modalopen var(--modal-duration);
+}
+@media screen and (max-width:1000px) {
+  .modal-content{
+    margin-top: 80px;
+
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 700px) {
+  .modal-content {
+    margin-top: 130px;
+  }
+}
+/* .modal-header {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 15px;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+    border-bottom: 1px solid #333;
+  } */
+
+div.searchCon {
+  display: grid;
+  position: relative;
+  border: 7px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
+
+.searchCon input[type="search"] {
+  position: relative;
+  height: 70px;
+  padding: 20px 220px 20px 30px;
+  background: #ffffff;
+  line-height: 30px;
+  font-size: 24px;
+  color: #233145;
+  border-radius: 7px;
+}
+
+.searchCon input[type="submit"] {
+  position: absolute;
+  display: block;
+  right: 0px;
+  top: 0px;
+  text-align: inherit;
+  width: 80%;
+  height: 70px;
+  padding: 20px 10px 20px 10px;
+  color: #ffffff !important;
+  background-color: #541484;
+  line-height: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 0px 7px 7px 0px;
+}
+
+.modal-content h3 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.recentKeys {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+}
+
+.recentKeys span {
+  border: 1px solid #fff;
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.recentKeys span:hover {
+  color: #541484;
+  border: 1px solid #541484;
+}
+
+/* .modal-form div {
+    margin: 15px 0;
+  }
+  
+  .modal-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .modal-form .form-input {
+    padding: 8px;
+    width: 100%;
+  } */
+
+.close-btn#close {
+  background: #fff;
+  font-size: 25px;
+  position: absolute;
+  top: 150px;
+  right: 40px;
+  color: #000;
+}
+
+.close-btn i.fa {
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 750px) {
+  .searchCon input[type="submit"] {
+    position: relative;
+    width: 285px;
+  }
+
+  #modal .close-btn {
+    top: 50px;
+  }
+
+  .modal-content h3 {
+    font-size: 24px;
+    margin: 40px auto;
+  }
+
+  .recentKeys span {
+    height: 50px;
+    align-self: flex-end;
+    font-size: 17px;
+    margin-right: 0;
+  }
+
+  .recentKeys span:nth-child(odd) {
+    margin-right: 7px;
+  }
+
+  .recentKeys span:last-child {
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,25 @@
+@media only screen and (min-width: 700px) {
+    .verification-img-v {
+        display: none;
+    }
+    #verification-table {
+            display: block;
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        #verification-table {
+            display: none;
+        }
+        .verification-img-v {
+            display: block;
+        }
+    }
+    .schedule-section {
+        padding: 80px 0 50px !important;
+    }
+
+    @media (max-width: 700px){
+div:not( .container .row) {
+    overflow-x:hidden !important;
+}}

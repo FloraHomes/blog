@@ -1,0 +1,312 @@
+:root {
+    --instagram: #a1755c;
+    --twitter: #00acee;
+    --facebook: #3b5998;
+    --youtube: #ff0000;
+    --linkedin: #0e76a8;
+}
+
+.main-footer {
+    position: relative;
+    background-color: #101130;
+    background: url(../components/assets/footerbg.jpg);
+}
+
+.main-footer .widgets-section {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 120px 0 50px;
+}
+
+.main-footer .footer-column {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.main-footer .footer-column:first-child {
+    padding-left: 50px;
+}
+
+.main-footer .footer-widget {
+    position: relative;
+}
+
+.main-footer .footer-column .widget-title {
+    position: relative;
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 30px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.main-footer .footer-column .widget-title:before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 40px;
+    background-color: #ed6c11;
+    content: '';
+}
+
+.main-footer .about-widget {
+    position: relative;
+}
+
+.main-footer .logo {
+    position: relative;
+    margin-bottom: 5px;
+    top: -20px;
+}
+
+.main-footer .footer-logo figure {
+    margin: 0;
+}
+
+.main-footer .footer-logo img {
+    display: block;
+    max-width: 100%;
+}
+
+.main-footer .about-widget .text {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.main-footer .about-widget .text p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #aaaaaa;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+/* social icons start*/
+.social-icon-one {
+    position: relative;
+}
+
+.social-icon-one li {
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+
+.social-icon-one li:last-child {
+    margin-right: 0;
+}
+
+.social-icon-one li a .fab {
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #a9b1bf;
+    background-color: #373851;
+    transition: all 900ms ease;
+    -moz-transition: all 900ms ease;
+    -webkit-transition: all 900ms ease;
+    -ms-transition: all 900ms ease;
+    -o-transition: all 900ms ease;
+}
+
+.social-icon-one li a:hover .fab {
+    transform: rotate(360deg);
+    background-color: #ed6c11;
+    border-color: #ed6c11;
+    color: #ffffff;
+}
+
+.social-icon-one li:nth-child(1) a:hover .fab {
+    background: var(--facebook);
+}
+
+.social-icon-one li:nth-child(2) a:hover .fab {
+    background: var(--twitter);
+}
+
+.social-icon-one li:nth-child(3) a:hover .fab {
+    background: var(--instagram);
+}
+
+.social-icon-one li:nth-child(4) a:hover .fab {
+    background: var(--youtube);
+}
+
+.social-icon-one li:nth-child(5) a:hover .fab {
+    background: var(--linkedin);
+}
+
+/* social icons end */
+
+/* useful links start*/
+.useful-links {
+    position: relative;
+    padding-left: 50px;
+}
+
+.user-links li {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.user-links li a {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 400;
+    padding: 0 15px;
+    border-left: 1px solid #ed6c11;
+    transition: all 300ms ease;
+}
+
+.user-links li a:hover {
+    color: #ed6c11;
+}
+
+/* useful links end */
+.main-footer .contact-list {
+    position: relative;
+}
+
+.main-footer .contact-list li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 25px;
+    list-style-type: none;
+}
+
+.main-footer .contact-list li:last-child {
+    margin-bottom: 0;
+}
+
+.main-footer .contact-list li .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 23px;
+    line-height: 25px;
+    color: #ffffff;
+}
+
+.main-footer .contact-list li .text {
+    display: block;
+    font-size: 14px;
+    line-height: 24px;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.main-footer .contact-list li .text a {
+    color: #ffffff;
+    transition: all 300ms ease;
+}
+
+.main-footer .contact-list li .text a:hover {
+    color: #ed6c11;
+}
+
+/* footer bottom start*/
+.main-footer .footer-bottom {
+    position: relative;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.main-footer .footer-bottom .inner-container {
+    position: relative;
+}
+
+.main-footer .footer-bottom .copyright-text {
+    position: relative;
+    padding: 20px 0;
+}
+
+.main-footer .footer-bottom .copyright-text p {
+    position: relative;
+    line-height: 20px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.main-footer .footer-bottom .copyright-text a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: all 300ms ease;
+}
+
+.main-footer .footer-bottom .copyright-text a:hover {
+    color: #ed6c11;
+}
+
+.main-footer .footer-bottom .footer-nav {
+    position: relative;
+    float: right;
+}
+
+.main-footer .footer-bottom .footer-nav ul {
+    position: relative;
+    padding: 15px 0;
+}
+
+.main-footer .footer-bottom .footer-nav ul li {
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.main-footer .footer-bottom .footer-nav ul li a {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ffffff;
+    font-weight: 400;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    background-color: #333333;
+    transition: all 300ms ease;
+}
+
+.main-footer .footer-bottom .footer-nav ul li a:hover {
+    color: #ed6c11;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* footer bottom end*/
+
+@media (max-width: 1125px) and (min-width:990px) {
+    .main-footer .logo {
+        top: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .main-footer .widgets-section {
+        padding-top: 35px;
+    }
+
+    .main-footer .about-widget {
+        position: relative;
+    }
+
+    .main-footer .logo {
+        margin-top: 50px;
+    }
+}

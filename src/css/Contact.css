@@ -1,0 +1,124 @@
+@media only screen and (max-width: 1023px){
+.contact-page-section .contact-column {
+    order: 1;
+    margin-left: 20px;
+}}
+.contact-page-section {
+    position: relative;
+    padding: 110px 0 70px;
+  }
+  
+  /* .contact-page-section .form-column {
+    position: relative;
+    margin-bottom: 40px;
+  } */
+  
+  /* .contact-page-section .form-column .inner-column {
+    position: relative;
+  } */
+  
+  .contact-page-section .sec-title {
+    margin-bottom: 30px;
+  }
+  
+  .contact-page-section .sec-title h2 {
+    font-size: 32px;
+  }
+
+  .contact-page-section .contact-column {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .contact-page-section .contact-info {
+    position: relative;
+    margin-bottom: 37px;
+  }
+  
+  .contact-page-section .contact-info li {
+    position: relative;
+    padding-left: 55px;
+    margin-bottom: 30px;
+  }
+  
+  .contact-page-section .contact-info li p {
+    display: block;
+    font-size: 14px;
+    line-height: 24px;
+    color: #777777;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .contact-page-section .contact-info li strong {
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222222;
+    font-weight: 600;
+  }
+  
+  .contact-page-section .contact-info li .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+    background-color: #ed6c11;
+    color: #ffffff;
+  }
+  
+  .contact-page-section .contact-info li a {
+    color: #777777;
+    transition: all 300ms ease;
+  }
+  
+  .contact-page-section .contact-info li a:hover {
+    color: #ed6c11;
+  }
+  
+
+
+.social-icon-two {
+    position: relative;
+    display: block;
+}
+
+
+ul, li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.social-icon-two li {
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+
+.social-icon-two li a .fab {
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+    transition: all 300ms ease;
+}
+
+
+
+
+
+
+

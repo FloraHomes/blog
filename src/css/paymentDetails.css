@@ -1,0 +1,31 @@
+.payment-details {
+  width: 100%;
+  background: #541484;
+  background-size: cover;
+  padding: 20px 15px;
+  color: #fff;
+  text-align: center;
+}
+.details-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.details-container p {
+  color: #ed6c11;
+  font-size: 25px;
+  text-align: center;
+}
+.banking-details {
+  color: #fff;
+  margin-top: 10px;
+  text-align: center;
+}
+.banking-details li {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}

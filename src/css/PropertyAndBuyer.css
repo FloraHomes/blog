@@ -1,0 +1,18 @@
+@media only screen and (min-width: 700px) {
+    .P2 {
+       display : none;
+    }
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .P1 {
+      display : none;
+    }
+    .P2 {
+       display : inline-block;
+    }
+  }
+  @media only screen and (max-width: 700px){
+#verification-table {
+    display:block;
+}}
