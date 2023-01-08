@@ -6,19 +6,24 @@ import BlogList from "./pages/blogs/list/BlogList";
 import HomePage from "./pages/home/HomePage";
 import BlogDetails from "./pages/blogs/details/BlogDetails";
 import NewBlog from "./pages/blogs/new/NewBlog";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className="contianer">
-      <Router>
-        {/* <Navbar2 /> */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/blogs" element={<BlogList />} />
-          <Route path="/blog-details/:slug" element={<BlogDetails />} />
-          <Route path="/add-blog" element={<NewBlog />} />
-        </Routes>
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Navbar2 />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blogs" element={<BlogList />} />
+            <Route path="/blog-details/:slug" element={<BlogDetails />} />
+            <Route path="/add-blog" element={<NewBlog />} />
+          </Routes>
+        </Router>
+      </QueryClientProvider>
     </div>
   );
 }

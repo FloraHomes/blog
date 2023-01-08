@@ -3,7 +3,6 @@ import {
   Badge,
   Card,
   CardBody,
-  CardHeader,
   CardImg,
   CardText,
   CardTitle,
@@ -15,28 +14,40 @@ import tempImg from "../../../assets/card-3.jpg";
 import tempImg2 from "../../../assets/card-2.jpg";
 import "./blog.css";
 import { Link } from "react-router-dom";
-import { data } from "./dummydata";
+import { data1 } from "./dummydata";
 import BlogSidebar from "../../../components/blogs/BlogSidebar";
+import { useQuery } from "react-query";
+import moment from "moment";
 
+const tags = [
+  { name: "website", color: "primary" },
+  { name: "hello", color: "info" },
+  { name: "construction", color: "success" },
+  { name: "sales", color: "primary" },
+  { name: "property", color: "danger" },
+];
 function BlogList() {
-  const tags = [
-    { name: "website", color: "primary" },
-    { name: "hello", color: "info" },
-    { name: "construction", color: "success" },
-    { name: "sales", color: "primary" },
-    { name: "property", color: "danger" },
-  ];
+  const { isLoading, error, data } = useQuery("allBlogs", () =>
+    fetch("http://localhost:7000/api/blog/all?currentpage=1&perpage=5").then(
+      (res) => res.json()
+    )
+  );
+  console.log(data);
+  if (isLoading) return "Loading...";
   return (
     <Container style={{ marginTop: "100px" }} className="main-blogs-container">
       <Row>
         <Col md={9}>
           <Row>
-            {data.blogList.map((item, index) => {
+            {data?.blogs.map((item, index) => {
               return (
-                <Col md={6} className="mb-5 ">
+                <Col md={6} key={index} className="mb-5 ">
                   <Card className="blog-card h-100 ">
                     <Link>
-                      <CardImg src={index % 2 == 0 ? tempImg : tempImg2} />
+                      <CardImg
+                        className="blog-img"
+                        src={item?.image ? item.image : tempImg2}
+                      />
                     </Link>
                     <CardBody>
                       <CardTitle
@@ -55,12 +66,12 @@ function BlogList() {
                           </small>
                           <span className="text-muted ms-1 me-1">|</span>
                           <small className="text-muted">
-                            {item.blogPosted}
+                            {moment(item.created_at).format(" MMMM Do YYYY")}
                           </small>
                         </div>
                       </div>
                       <div className="my-1 py-2">
-                        {tags.map((item) => (
+                        {tags.map((item, index) => (
                           <a
                             key={index}
                             href="/"
@@ -76,7 +87,7 @@ function BlogList() {
                         className="blog-content-truncate"
                         style={{ height: "60px", lineHeight: "1.2rem" }}
                       >
-                        {item.excerpt}
+                        {item.details}
                       </CardText>
                       <hr />
                       <div className="d-flex justify-content-between align-items-center justify-self-end">

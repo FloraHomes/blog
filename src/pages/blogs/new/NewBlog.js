@@ -7,7 +7,8 @@ import Select from "react-select";
 import htmlToDraft from "html-to-draftjs";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, ContentState } from "draft-js";
-
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "./newblog.css";
 // ** Reactstrap Imports
 import {
   Row,
@@ -31,8 +32,7 @@ const NewBlog = () => {
     contentBlock.contentBlocks
   );
   const editorState = EditorState.createWithContent(contentState);
-  // ** States
-  const [data, setData] = useState(null),
+  const [data1, setData1] = useState(null),
     [title, setTitle] = useState(""),
     [slug, setSlug] = useState(""),
     [status, setStatus] = useState(""),
@@ -60,43 +60,33 @@ const NewBlog = () => {
   };
 
   return (
-    <div className="blog-edit-wrapper">
-      {data !== null ? (
-        <Row>
-          <Col sm="12">
-            <Card>
-              <CardBody>
-                <div className="d-flex">
-                  {/* <div>
-                    <Avatar
-                      className="me-75"
-                      img={data.avatar}
-                      imgWidth="38"
-                      imgHeight="38"
-                    />
-                  </div> */}
-                  <div>
-                    <h6 className="mb-25">{data.userFullName}</h6>
-                    <CardText>{data.createdTime}</CardText>
-                  </div>
+    <div className="container mt-5">
+      <Row>
+        <Col sm="12">
+          <Card>
+            <CardBody>
+              <div className="d-flex">
+                <div>
+                  <h3>New Blog</h3>
                 </div>
-                <Form className="mt-2" onSubmit={(e) => e.preventDefault()}>
-                  <Row>
-                    <Col md="6" className="mb-2">
-                      <Label className="form-label" for="blog-edit-title">
-                        Title
-                      </Label>
-                      <Input
-                        id="blog-edit-title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                      />
-                    </Col>
-                    <Col md="6" className="mb-2">
-                      <Label className="form-label" for="blog-edit-category">
-                        Category
-                      </Label>
-                      {/* <Select
+              </div>
+              <Form className="mt-2" onSubmit={(e) => e.preventDefault()}>
+                <Row>
+                  <Col md="6" className="mb-2">
+                    <Label className="form-label" for="blog-edit-title">
+                      Title
+                    </Label>
+                    <Input
+                      id="blog-edit-title"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+                  </Col>
+                  <Col md="6" className="mb-2">
+                    <Label className="form-label" for="blog-edit-category">
+                      Category
+                    </Label>
+                    {/* <Select
                         id="blog-edit-category"
                         isClearable={false}
                         theme={selectThemeColors}
@@ -108,91 +98,92 @@ const NewBlog = () => {
                         classNamePrefix="select"
                         onChange={(data) => setBlogCategories(data)}
                       /> */}
-                    </Col>
-                    <Col md="6" className="mb-2">
-                      <Label className="form-label" for="blog-edit-slug">
-                        Slug
-                      </Label>
-                      <Input
-                        id="blog-edit-slug"
-                        value={slug}
-                        onChange={(e) => setSlug(e.target.value)}
-                      />
-                    </Col>
-                    <Col md="6" className="mb-2">
-                      <Label className="form-label" for="blog-edit-status">
-                        Status
-                      </Label>
-                      <Input
-                        type="select"
-                        id="blog-edit-status"
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}
-                      >
-                        <option value="Published">Published</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Draft">Draft</option>
-                      </Input>
-                    </Col>
-                    <Col sm="12" className="mb-2">
-                      <Label className="form-label">Content</Label>
+                  </Col>
+                  <Col md="6" className="mb-2">
+                    <Label className="form-label" for="blog-edit-status">
+                      Author
+                    </Label>
+                    <Input
+                      id="blog-edit-title"
+                      value={title}
+                      disabled={true}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+                  </Col>
+                  {/* <Col md="6" className="mb-2">
+                    <Label className="form-label" for="blog-edit-status">
+                      Status
+                    </Label>
+                    <Input
+                      type="select"
+                      id="blog-edit-status"
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value="Published">Published</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Draft">Draft</option>
+                    </Input>
+                  </Col> */}
+                  <Col sm="12" className="mb-2">
+                    <Label className="form-label">Content</Label>
+                    <div className="border p-2 mb-3 editor">
                       <Editor
                         editorState={content}
                         onEditorStateChange={(data) => setContent(data)}
                       />
-                    </Col>
-                    <Col className="mb-2" sm="12">
-                      <div className="border rounded p-2">
-                        <h4 className="mb-1">Featured Image</h4>
-                        <div className="d-flex flex-column flex-md-row">
-                          <img
-                            className="rounded me-2 mb-1 mb-md-0"
-                            src={featuredImg}
-                            alt="featured img"
-                            width="170"
-                            height="110"
-                          />
-                          <div>
-                            <small className="text-muted">
-                              Required image resolution 800x400, image size
-                              10mb.
-                            </small>
+                    </div>
+                  </Col>
+                  <Col className="mb-2" sm="12">
+                    <div className="border rounded p-2">
+                      <h4 className="mb-1">Featured Image</h4>
+                      <div className="d-flex flex-column flex-md-row">
+                        <img
+                          className="rounded me-2 mb-1 mb-md-0"
+                          src={featuredImg}
+                          alt="featured img"
+                          width="170"
+                          height="110"
+                        />
+                        <div>
+                          <small className="text-muted">
+                            Required image resolution 800x400, image size 10mb.
+                          </small>
 
-                            <p className="my-50">
-                              <a href="/" onClick={(e) => e.preventDefault()}>
-                                {`C:/fakepath/${imgPath}`}
-                              </a>
-                            </p>
-                            <div className="d-inline-block">
-                              <div className="mb-0">
-                                <Input
-                                  type="file"
-                                  id="exampleCustomFileBrowser"
-                                  name="customFile"
-                                  onChange={onChange}
-                                  accept=".jpg, .png, .gif"
-                                />
-                              </div>
+                          <p className="my-50">
+                            <a href="/" onClick={(e) => e.preventDefault()}>
+                              {`C:/fakepath/${imgPath}`}
+                            </a>
+                          </p>
+                          <div className="d-inline-block">
+                            <div className="mb-0">
+                              <Input
+                                type="file"
+                                id="exampleCustomFileBrowser"
+                                name="customFile"
+                                onChange={onChange}
+                                accept=".jpg, .png, .gif"
+                              />
                             </div>
                           </div>
                         </div>
                       </div>
-                    </Col>
-                    <Col className="mt-50">
-                      <Button color="primary" className="me-1">
-                        Save Changes
-                      </Button>
-                      <Button color="secondary" outline>
-                        Cancel
-                      </Button>
-                    </Col>
-                  </Row>
-                </Form>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      ) : null}
+                    </div>
+                  </Col>
+                  <Col className="mt-50">
+                    <Button color="primary" className="me-1">
+                      Save Changes
+                    </Button>
+                    <Button color="secondary" outline>
+                      Cancel
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     </div>
   );
 };

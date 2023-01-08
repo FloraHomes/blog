@@ -13,12 +13,12 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import { data } from "../list/dummydata";
+import { data1 } from "../list/dummydata";
 import tempImg2 from "../../../assets/card-2.jpg";
 import BlogSidebar from "../../../components/blogs/BlogSidebar";
 
 function BlogDetails() {
-  const [blogData, setBlogData] = useState(data.blogList[0]);
+  const [blogData, setBlogData] = useState(data1.blogList[0]);
   const tags = [
     { name: "website", color: "primary" },
     { name: "hello", color: "info" },
@@ -63,7 +63,7 @@ function BlogDetails() {
                   <div className="my-1 py-2">
                     {tags.map((item, index) => (
                       <a
-                        key={index}
+                        key={index + "i"}
                         href="/"
                         onClick={(e) => e.preventDefault()}
                       >
