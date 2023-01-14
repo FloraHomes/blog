@@ -1,17 +1,17 @@
-import { create } from "apisauce";
+import { create } from 'apisauce';
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-const BASE_URL = process.env.BASE_URL;
+const baseURL = process.env.REACT_APP_BASE_URL;
 const client = create({
-  BASE_URL,
+  baseURL,
 });
 
 export const config = async () => {
-  const token = await AsyncStorage.getItem(process.env.TOKEN_KEY);
+  const token = await localStorage.getItem(process.env.TOKEN_KEY);
   return {
     headers: {
       Authorization: `Bearer ${token}`,
-      Accept: "application/json",
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
   };
 };
@@ -19,7 +19,8 @@ export const authConfig = async (token) => {
   return {
     headers: {
       Authorization: `Bearer ${token}`,
-      Accept: "application/json",
+      'Content-Type': 'multipart/form-data',
+      Accept: 'application/json',
     },
   };
 };

@@ -32,7 +32,6 @@ function BlogList() {
       (res) => res.json()
     )
   );
-  console.log(data);
   if (isLoading) return "Loading...";
   return (
     <Container style={{ marginTop: "100px" }} className="main-blogs-container">

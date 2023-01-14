@@ -15,6 +15,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import logo from "../assets/FHGC weblogo.png";
+import WebRoutes from "../../common/WebRoutes";
 
 function Navbar2() {
   const [isOpen, setIsOpen] = useState();
@@ -27,20 +28,32 @@ function Navbar2() {
       <Navbar style={{ background: "white" }} light expand="md">
         <NavbarBrand id="logo">
           <Link className="navbar-brand" to="/">
-            <img
+            {/* <img
               style={{ width: "150px", height: "40px" }}
               src={logo}
               alt="logo"
-            />
+            /> */}
           </Link>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className="custom-nav-item">
+            {/* <NavItem className="custom-nav-item">
               <NavLink href="/components/">Home</NavLink>
+            </NavItem> */}
+            <NavItem className="custom-nav-item">
+              <Link to="/">Home</Link>
             </NavItem>
             <NavItem className="custom-nav-item">
+              <Link to={WebRoutes.blogs}>Blogs</Link>
+            </NavItem>
+            <NavItem className="custom-nav-item">
+              <Link to={WebRoutes.addBlog}>Add new Blog</Link>
+            </NavItem>
+            <NavItem className="custom-nav-item">
+              <Link to={WebRoutes.categories}>Categories</Link>
+            </NavItem>
+            {/* <NavItem className="custom-nav-item">
               <NavLink href="https://github.com/reactstrap/reactstrap">
                 About
               </NavLink>
@@ -76,7 +89,7 @@ function Navbar2() {
               <button type="button" className="custom-btn btn-primary btn-lg ">
                 Register/Login
               </button>
-            </Link>
+            </Link> */}
           </Nav>
         </Collapse>
       </Navbar>
