@@ -22,7 +22,7 @@ import {
 
 const TableStriped = ({ data }) => {
   return (
-    <Table striped responsive>
+    <Table className='bg-white' striped>
       <thead>
         <tr>
           <th>#</th>

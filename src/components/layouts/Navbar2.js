@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./navbar.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './navbar.css';
 import {
   Collapse,
   Navbar,
@@ -13,9 +13,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from "reactstrap";
-import logo from "../assets/FHGC weblogo.png";
-import WebRoutes from "../../common/WebRoutes";
+} from 'reactstrap';
+import logo from '../assets/FHGC weblogo.png';
+import WebRoutes from '../../common/WebRoutes';
 
 function Navbar2() {
   const [isOpen, setIsOpen] = useState();
@@ -25,32 +25,32 @@ function Navbar2() {
   };
   return (
     <div>
-      <Navbar style={{ background: "white" }} light expand="md">
-        <NavbarBrand id="logo">
-          <Link className="navbar-brand" to="/">
-            {/* <img
-              style={{ width: "150px", height: "40px" }}
+      <Navbar style={{ background: 'white' }} light expand='md'>
+        <NavbarBrand id='logo'>
+          <Link className='navbar-brand' to='/'>
+            <img
+              style={{ width: '150px', height: '40px' }}
               src={logo}
-              alt="logo"
-            /> */}
+              alt='logo'
+            />
           </Link>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className='ml-auto' navbar>
             {/* <NavItem className="custom-nav-item">
               <NavLink href="/components/">Home</NavLink>
             </NavItem> */}
-            <NavItem className="custom-nav-item">
-              <Link to="/">Home</Link>
+            <NavItem className='custom-nav-item'>
+              <Link to='/'>Home</Link>
             </NavItem>
-            <NavItem className="custom-nav-item">
+            <NavItem className='custom-nav-item'>
               <Link to={WebRoutes.blogs}>Blogs</Link>
             </NavItem>
-            <NavItem className="custom-nav-item">
+            <NavItem className='custom-nav-item'>
               <Link to={WebRoutes.addBlog}>Add new Blog</Link>
             </NavItem>
-            <NavItem className="custom-nav-item">
+            <NavItem className='custom-nav-item'>
               <Link to={WebRoutes.categories}>Categories</Link>
             </NavItem>
             {/* <NavItem className="custom-nav-item">

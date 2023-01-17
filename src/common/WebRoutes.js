@@ -1,7 +1,8 @@
 export default {
-  home: "/",
-  blogs: "/blogs",
-  blogDetails: "/blog-details/:slug",
-  addBlog: "/add-blog",
-  categories: "/categories",
+  home: '/',
+  login: '/admin-login',
+  blogs: '/blogs',
+  blogDetails: '/blog-details/:slug',
+  addBlog: '/add-blog',
+  categories: '/categories',
 };

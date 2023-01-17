@@ -6,16 +6,24 @@ const client = create({
 });
 
 export const config = async () => {
-  const token = await localStorage.getItem(process.env.TOKEN_KEY);
   return {
     headers: {
-      Authorization: `Bearer ${token}`,
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
     },
   };
 };
-export const authConfig = async (token) => {
+export const simpleConfig = async () => {
+  return {
+    headers: {
+      Accept: 'application/json',
+    },
+  };
+};
+
+export const authConfig = async () => {
+  const token = await localStorage.getItem(process.env.REACT_APP_TOKEN_KEY);
+
   return {
     headers: {
       Authorization: `Bearer ${token}`,

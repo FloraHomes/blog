@@ -55,7 +55,6 @@ export const Categories = () => {
     }
   );
   if (isLoading) return 'Loading...';
-  console.log(formData);
   const onSubmit = async (data) => {
     let formDataApi = new FormData();
     formDataApi.append('title', data.title);
@@ -63,7 +62,6 @@ export const Categories = () => {
     formDataApi.append('image', data.image);
     formDataApi.append('color_code', data.color_code);
     formDataApi.append('added_by', '63b88cfaea20bfedc6360b53');
-    console.log(data);
     if (!isLoading) addCategoryMutation.mutate(formDataApi);
   };
   return (

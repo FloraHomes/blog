@@ -23,7 +23,7 @@ export const AddCategory = ({ onSubmit, formData, setFormData, imgRef }) => {
   };
   return (
     <div>
-      <Row className='card flex-row p-3'>
+      <Row className='card flex-row p-3 mb-4'>
         <h3>Add New Category</h3>
         <Col md={8} lg={8}>
           <Label className='form-label' for='blog-edit-title'>
