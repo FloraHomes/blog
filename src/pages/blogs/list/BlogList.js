@@ -19,6 +19,7 @@ import { useQuery } from 'react-query';
 import moment from 'moment';
 import { ApiCall, ApiRoutes } from '../../../api';
 import { simpleConfig } from '../../../api/env';
+import Header from '../../../components/header';
 
 const tags = [
   { name: 'website', color: 'primary' },
@@ -40,10 +41,14 @@ function BlogList() {
     return response.data;
   };
   if (isLoading) return 'Loading...';
-  console.log(data);
   return (
     <div className='main-blogs-container'>
-      <Row className='hero-section-blog'></Row>
+      <div className='hero-section-blog'>
+        <Header />
+        <div className='d-flex'>
+          <h1 className='text-white'>Hello welcome to our blog page</h1>
+        </div>
+      </div>
       <Row className='container mt-5'>
         <Col md={9}>
           <Row>
