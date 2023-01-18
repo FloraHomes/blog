@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 // ** Third Party Components
 import Select from 'react-select';
 import htmlToDraft from 'html-to-draftjs';
+import draftToHtml from 'draftjs-to-html';
+
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, ContentState } from 'draft-js';
+import { EditorState, ContentState, convertToRaw } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './newblog.css';
+
 // ** Reactstrap Imports
 import {
   Row,
@@ -22,6 +25,8 @@ import {
 import { ApiCall, ApiRoutes, config } from '../../../api';
 import { useQuery } from 'react-query';
 import { toast } from 'react-hot-toast';
+import useAuth from '../../../hooks/useAuth';
+import { useMemo } from 'react';
 
 const initialContent = ``;
 const NewBlog = () => {
@@ -30,12 +35,18 @@ const NewBlog = () => {
     contentBlock.contentBlocks
   );
   const editorState = EditorState.createWithContent(contentState);
+  const { currentUser } = useAuth();
   const [title, setTitle] = useState(''),
+    [abstract, setAbstract] = useState(''),
     [content, setContent] = useState(editorState),
     [blogCategories, setBlogCategories] = useState([]),
     [selectedCategories, setSelectedCategories] = useState([]),
     [featuredImg, setFeaturedImg] = useState(null),
     [image, setImage] = useState();
+  let htmlData = useMemo(
+    () => draftToHtml(convertToRaw(content.getCurrentContent())),
+    [content]
+  );
 
   const {
     isLoading,
@@ -59,7 +70,7 @@ const NewBlog = () => {
       setBlogCategories(tempCats);
     }
   }, [categoriesApi]);
-
+  console.log(categoriesApi);
   if (isLoading) return 'Loading...';
 
   const onChange = (e) => {
@@ -75,9 +86,10 @@ const NewBlog = () => {
   const addNewBlog = async () => {
     let formData = new FormData();
     formData.append('title', title);
-    formData.append('details', content);
+    formData.append('details', htmlData);
     formData.append('image', image);
-    formData.append('author', '6391d57d2d933999f0401dd6');
+    formData.append('abstract', abstract);
+    formData.append('author', currentUser._id);
     for (var i = 0; i < selectedCategories.length; i++) {
       formData.append('categories[]', selectedCategories[i]);
     }
@@ -89,18 +101,19 @@ const NewBlog = () => {
         await config()
       ).headers
     );
-    console.log({ response });
     if (response.ok) {
       toast.success(response?.data.message);
       setImage(null);
       setFeaturedImg(null);
       setTitle('');
+      setAbstract('');
+      setSelectedCategories([]);
       setContent(editorState);
     } else {
-      toast.error(response?.data.error);
+      toast.error(
+        response?.data.error ? response?.data.error : response?.data.message
+      );
     }
-
-    // }else
   };
   return (
     <div className='container mt-5'>
@@ -125,6 +138,7 @@ const NewBlog = () => {
                       onChange={(e) => setTitle(e.target.value)}
                     />
                   </Col>
+
                   <Col md='6' className='mb-2'>
                     <Label className='form-label' for='blog-edit-category'>
                       Category
@@ -143,13 +157,26 @@ const NewBlog = () => {
                       />
                     ) : null}
                   </Col>
+                  <Col md='12' className='mb-2'>
+                    <Label className='form-label' for='blog-edit-status'>
+                      Abstract
+                    </Label>
+                    <Input
+                      type='textarea'
+                      id='blog-edit-title'
+                      value={abstract}
+                      onChange={(e) => setAbstract(e.target.value)}
+                    />
+                  </Col>
                   <Col md='6' className='mb-2'>
                     <Label className='form-label' for='blog-edit-status'>
                       Author
                     </Label>
                     <Input
                       id='blog-edit-title'
-                      value={'Sheraz Sab'}
+                      value={
+                        currentUser?.firstName + ' ' + currentUser?.lastName
+                      }
                       disabled={true}
                       onChange={(e) => setTitle(e.target.value)}
                     />

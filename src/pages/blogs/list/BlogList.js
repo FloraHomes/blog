@@ -14,10 +14,11 @@ import tempImg from '../../../assets/card-3.jpg';
 import tempImg2 from '../../../assets/card-2.jpg';
 import './blog.css';
 import { Link } from 'react-router-dom';
-import { data1 } from './dummydata';
 import BlogSidebar from '../../../components/blogs/BlogSidebar';
 import { useQuery } from 'react-query';
 import moment from 'moment';
+import { ApiCall, ApiRoutes } from '../../../api';
+import { simpleConfig } from '../../../api/env';
 
 const tags = [
   { name: 'website', color: 'primary' },
@@ -27,15 +28,23 @@ const tags = [
   { name: 'property', color: 'danger' },
 ];
 function BlogList() {
-  const { isLoading, error, data } = useQuery('allBlogs', () =>
-    fetch('http://localhost:7000/api/blog/all?currentpage=1&perpage=200').then(
-      (res) => res.json()
-    )
-  );
+  const { isLoading, error, data } = useQuery('allBlogs', () => getBlogs());
+
+  const getBlogs = async () => {
+    const response = await ApiCall.get(
+      ApiRoutes.allBlogs(1, 200),
+      (
+        await simpleConfig()
+      ).headers
+    );
+    return response.data;
+  };
   if (isLoading) return 'Loading...';
+  console.log(data);
   return (
-    <Container style={{ marginTop: '100px' }} className='main-blogs-container'>
-      <Row>
+    <div className='main-blogs-container'>
+      <Row className='hero-section-blog'></Row>
+      <Row className='container mt-5'>
         <Col md={9}>
           <Row>
             {data?.blogs.map((item, index) => {
@@ -83,21 +92,20 @@ function BlogList() {
                         ))}
                       </div>
                       <CardText
-                        className='blog-content-truncate'
                         style={{ height: '60px', lineHeight: '1.2rem' }}
                       >
-                        {item.details}
+                        {item?.abstract}
                       </CardText>
                       <hr />
                       <div className='d-flex justify-content-between align-items-center justify-self-end'>
                         <Link to={`/pages/blog/detail/1`}>
                           <span className='text-body blog-comments'>
-                            {item.comment} Comments
+                            {item.comment ? item.comments : '0'} Comments
                           </span>
                         </Link>
                         <Link
                           className='text-button'
-                          to={`/blog-details/${item.id}`}
+                          to={`/blog-details/${item.slug}`}
                         >
                           Read More
                         </Link>
@@ -113,7 +121,7 @@ function BlogList() {
           <BlogSidebar />
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 

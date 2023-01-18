@@ -9,7 +9,13 @@
   --bs-btn-font-size: 1.25rem;
   --bs-btn-border-radius: 0.5rem;
 }
-
+.hero-section-blog {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../../../assets/blogImages/hero-section-blog-img.jpg');
+  background-position: center;
+  background-size: cover;
+  min-height: 550px;
+}
 .main-blogs-container {
   background-color: #f8f8f8;
 }

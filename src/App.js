@@ -53,6 +53,7 @@ function App() {
               <Routes>
                 <Route path={WebRoutes.home} element={<HomePage />} />
                 <Route path={WebRoutes.login} element={<AdminLogin />} />
+                <Route path={WebRoutes.loginSimple} element={<AdminLogin />} />
                 <Route path={WebRoutes.blogs} element={<BlogList />} />
                 <Route path={WebRoutes.blogDetails} element={<BlogDetails />} />
                 <Route element={<PrivateRoutes />}>

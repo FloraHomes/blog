@@ -1,7 +1,13 @@
 // ** React Imports
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import {
+  Link,
+  redirect,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 
 // ** Reactstrap Imports
 import {
@@ -22,14 +28,21 @@ import useAuth from '../../hooks/useAuth';
 import useLoader from '../../hooks/useLoader';
 
 const initialState = {
-  email: '',
-  password: '',
+  email: 's0321425@gmail.com',
+  password: '12345678',
 };
 export const AdminLogin = () => {
   const [formInput, setFormInput] = useState(initialState);
-  const { userLogin } = useAuth();
-  const { loading, setLoading } = useLoader();
 
+  const { userLogin, token } = useAuth();
+
+  const { loading, setLoading } = useLoader();
+  const { route } = useParams();
+  const navigate = useNavigate();
+
+  if (token) {
+    return navigate(route ? `/${route.toString()}` : WebRoutes.home);
+  }
   const loginHandler = async () => {
     setLoading(true);
     const response = await ApiCall.post(
@@ -47,6 +60,7 @@ export const AdminLogin = () => {
     } else {
       toast.success(response?.data?.message);
       userLogin(response?.data?.data);
+      return navigate(route ? `/${route.toString()}` : WebRoutes.home);
     }
   };
   const onChangeInput = (e) => {
@@ -80,6 +94,7 @@ export const AdminLogin = () => {
                 </Label>
                 <Input
                   name='email'
+                  value={formInput.email}
                   onChange={onChangeInput}
                   type='email'
                   id='login-email'
@@ -92,6 +107,7 @@ export const AdminLogin = () => {
                   Password
                 </Label>
                 <Input
+                  value={formInput.password}
                   name='password'
                   onChange={onChangeInput}
                   type='password'

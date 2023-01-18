@@ -13,13 +13,15 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Button,
 } from 'reactstrap';
 import logo from '../assets/FHGC weblogo.png';
 import WebRoutes from '../../common/WebRoutes';
+import useAuth from '../../hooks/useAuth';
 
 function Navbar2() {
   const [isOpen, setIsOpen] = useState();
-
+  const { Logout, token } = useAuth();
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -27,13 +29,13 @@ function Navbar2() {
     <div>
       <Navbar style={{ background: 'white' }} light expand='md'>
         <NavbarBrand id='logo'>
-          <Link className='navbar-brand' to='/'>
+          {/* <Link className='navbar-brand' to='/'>
             <img
               style={{ width: '150px', height: '40px' }}
               src={logo}
               alt='logo'
             />
-          </Link>
+          </Link> */}
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -53,6 +55,13 @@ function Navbar2() {
             <NavItem className='custom-nav-item'>
               <Link to={WebRoutes.categories}>Categories</Link>
             </NavItem>
+            {token ? (
+              <NavItem className='custom-nav-item'>
+                <Button color='danger' onClick={Logout}>
+                  Log Out
+                </Button>
+              </NavItem>
+            ) : null}
             {/* <NavItem className="custom-nav-item">
               <NavLink href="https://github.com/reactstrap/reactstrap">
                 About
